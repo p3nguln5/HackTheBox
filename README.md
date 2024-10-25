@@ -1,4 +1,4 @@
-# 🚀 My HackTheBox Learning Journey
+# 🚀 Learning With HackTheBox
 
 Welcome to my cybersecurity learning repository! This space documents my journey through various HackTheBox challenges, including write-ups, code solutions, and learning resources.
 
