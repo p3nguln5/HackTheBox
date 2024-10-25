@@ -62,7 +62,7 @@ This repository is for educational purposes only. All knowledge and tools shared
 - Respect privacy and confidentiality
 - Adhere to legal requirements
 
-## 📞 Contact
+## 🔗 Links
 
 - HackTheBox Profile: https://app.hackthebox.com/users/2101547
 - HackTheBox CTF Profile: https://ctf.hackthebox.com/user/profile/470718
