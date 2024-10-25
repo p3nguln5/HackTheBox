@@ -1,0 +1,4 @@
+import requests
+URL = 'http://94.237.60.154:37848'
+r = requests.post(f'{URL}/api/request-session-parameters')
+print(r.content)

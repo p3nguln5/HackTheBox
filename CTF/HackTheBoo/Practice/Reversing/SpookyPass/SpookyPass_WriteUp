@@ -1,0 +1,9 @@
+Running the "pass" elf file it ask for a password input
+
+Used the "xxd -g -l <file>" command on the elf file
+this gave me a hexdump of the file
+
+Looking at the hex values I found the part of the hex where it is asking for a password
+At this section I found a secret password in plain test in the hex data
+
+Using this secret password when promoted after running the "pass" file I get the flag

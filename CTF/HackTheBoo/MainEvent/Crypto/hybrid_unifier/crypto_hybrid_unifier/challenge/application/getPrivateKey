@@ -1,0 +1,52 @@
+import requests
+import json
+import secrets
+from typing import Tuple
+
+def parse_hex_params(response_content: bytes) -> Tuple[int, int]:
+    """Parse the hex parameters from the API response."""
+    params = json.loads(response_content)
+    g = int(params['g'], 16)  # Convert hex string to integer
+    p = int(params['p'], 16)  # Convert hex string to integer
+    return g, p
+
+def generate_keys(g: int, p: int) -> Tuple[int, str]:
+    """
+    Generate private and public keys for Diffie-Hellman exchange.
+    Returns (private_key, public_key_hex)
+    """
+    # Generate a random private key
+    private_key = secrets.randbelow(p)
+    
+    # Calculate public key: g^private_key mod p
+    public_key = pow(g, private_key, p)
+    
+    # Convert public key to hexadecimal string, removing '0x' prefix
+    public_key_hex = hex(public_key)[2:]
+    
+    return private_key, public_key_hex
+
+def init_session(url: str, public_key_hex: str) -> requests.Response:
+    """Initialize a session with the server using the public key."""
+    response = requests.post(
+        f'{url}/api/init-session',
+        json={'public_key': public_key_hex}
+    )
+    return response
+
+# Your server URL
+URL = 'http://94.237.60.154:37848'
+
+# Get the parameters
+params_response = requests.post(f'{URL}/api/request-session-parameters')
+g, p = parse_hex_params(params_response.content)
+
+# Generate keys
+private_key, public_key_hex = generate_keys(g, p)
+
+# Initialize session
+session_response = init_session(URL, public_key_hex)
+print("Session initialization response:", session_response.content)
+
+# Save private key for later use if needed
+print(f"Private key (save this): {private_key}")

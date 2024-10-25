@@ -1,0 +1,1 @@
+Ran xxd -g -l on the elf file and look at the hex and found the flag

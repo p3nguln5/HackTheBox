@@ -1,0 +1,33 @@
+Replacement
+Given a string, a letter in the string and a random letter, replace all instances of the first letter with the latter.
+
+Example
+Input
+Input String: Test me
+Replace: e
+Replace with: K
+
+Output
+TKst mK
+
+# take in the number
+n = int(input())
+
+# calculate answer
+
+
+# print answer
+print(answer)
+
+Solution:
+# take in the number
+text = input()
+replace = input()
+replaceWith = input ()
+
+# calculate answer
+answer = text.replace(replace, replaceWith)
+
+
+# print answer
+print(answer)

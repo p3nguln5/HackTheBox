@@ -1,0 +1,59 @@
+This is a challenge on transformation of data
+
+When running the script it looks like this when using it:
+Please enter your recipe for frying: Test_To_See_If_This_Works
+got:      `_sees_TfthIsSr__WTikeT_oo`
+expected: `1_n3}f3br9Ty{_6_rHnf01fg_14rlbtB60tuarun0c_tr1y3`
+This recipe isn't right :(
+
+
+Run Ghidar and import the script into it
+Look at the functions tab on the right as I clicked through on the code on the left
+
+Found the main function in the code and found out it took our input and put it into the fryer funch
+
+Went to the fryer function in Ghidar
+Took the code from Fryer and Main and put it into Claude AI
+
+To see if there is a way to revers the code
+Tried to use the code but it was giving me python code and the Main anf Fryer function are in C
+
+We then start trying to get the code to out put in c and ended up getting this code:
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void reverse_fryer(char text, int length) {
+    unsigned int seed = 0x13377331;
+    char temp;
+
+    // Store random numbers first
+    intrandom_nums = malloc(sizeof(int) * length);
+    for(int i = 0; i < length - 1; i++) {
+        random_nums[i] = rand_r(&seed);
+    }
+
+    // Reverse the shuffling
+    for(int i = length - 2; i >= 0; i--) {
+        int swap_idx = (random_nums[i] % (length - i)) + i;
+        temp = text[i];
+        text[i] = text[swap_idx];
+        text[swap_idx] = temp;
+    }
+
+    free(random_nums);
+}
+
+int main() {
+    char desired[] = "1_n3}f3br9Ty{_6_rHnf01fg_14rlbtB60tuarun0c_tr1y3";
+    int length = strlen(desired);
+    char *text = strdup(desired);
+
+    reverse_fryer(text, length);
+    printf("Original string: %s\n", text);
+
+    free(text);
+    return 0;
+}
+
+This worked and output the correct flage

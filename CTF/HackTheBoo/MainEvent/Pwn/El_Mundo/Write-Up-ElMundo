@@ -1,0 +1,9 @@
+Looking at the given files first we ran the el_mundo script and found what we needed
+to manipulate to perform a buffer overflow attack. In this script it showed us
+each section of the hex and how many bits each are.
+
+Taking this information over the the python script we add the IP and Port for the
+website. Then we added the amount of bits to overflow and the hex we wanted to add for
+out our code.
+
+Had to run in a python env on my terminal to download needed packages 

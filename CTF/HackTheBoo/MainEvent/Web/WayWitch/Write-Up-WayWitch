@@ -1,0 +1,22 @@
+First thing I did was start a nmap scan of the website (See that is the nmap file)
+
+
+Going to the web-page the first thing I did not inspect elements F12
+
+In the <script> section of the HTML I found a token maker script for the page
+
+I took the code and edited so I could make an admin tocken
+I used https://onecompiler.com/html/ to compile the html online and got this:
+  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzI5Nzg1NTExfQ.opU7nDXUNoSFF6F250MXbJrMj3sQe8onJhG2Y9PGSt8
+
+Then I used burpsuite to try and put my own generated token
+  When using my own token on the website I get  a response saying "Ticket submitted successfully", but nothing happened
+
+After nothing showed up I search for a bit and then we used FUZZ to see if we could find a sub-domain
+
+We did find on using this command: ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u https://83.136.254.37:40229/FUZZ
+  Finding us the /tickets
+
+Going to this we can not accesses it unless we are admin.
+Good for use that we got an admin token
+Using the admin token with burpsuite we get into the page and find the flag in the list of tickets 

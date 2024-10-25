@@ -1,0 +1,17 @@
+Once I downloaded the files I saw it was a lot of evtx files which are windows log files
+
+Using chainsaw and sigma searches I found 34 malicious activities:
+  chainsaw hunt *.evtx --sigma ~/.src/chainsaw/sigma/ --mapping ~/.src/chainsaw/mappings/sigma-event-logs-all.yml
+
+From looking at these I found one that was running a -EncodedCommand (Record 22)
+I took that encoded command and did a base 64 decode on it and found the first half of the flag
+
+from there I ran:
+chainsaw dump Microsoft-Windows-PowerShell_Operational.evtx --json > ../events.json
+ to get all logs from this certain evtx file
+
+Then I ran this command to only get the same even as the first flag
+cat ../events.json | jq '.[].Event | select(.System.EventID == 4104)'
+
+Looking through I found another base64 encoded value in the ScriptBlockText
+cat ../events.json | jq '.[].Event | select(.EventData.ScriptBlockId == "72187be7-469a-440d-ac5f-44d1f81d3de5")'

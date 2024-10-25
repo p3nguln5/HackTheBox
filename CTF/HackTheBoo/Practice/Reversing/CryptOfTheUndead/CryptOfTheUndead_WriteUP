@@ -1,0 +1,12 @@
+This challenge had two files crypt and file.txt.undead
+
+running ./crypt it wants a file to encrypt
+
+giving it a file with data in it it encrypts it and addes the .undead to it
+  EX: test.txt >>> ./crypt test.txt >>> test.txt.undead
+
+trying to put the .undead file back in did not work
+
+What I did was removed .undead from the file and ran crypt on the file again
+
+This worked and decrypt the file 

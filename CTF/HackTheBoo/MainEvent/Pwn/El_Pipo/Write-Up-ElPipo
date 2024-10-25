@@ -1,0 +1,32 @@
+Did both hexdump -C and readelf -a on the binary file el_pipo
+  Both outputs in this directory
+
+For the hexdump I found in the ASCII section on the right found this:
+
+00002000  01 00 02 00 00 00 00 00  2e 2f 66 6c 61 67 2e 74  |........./flag.t|
+00002010  78 74 00 00 00 00 00 00  0a 45 72 72 6f 72 20 6f  |xt.......Error o|
+00002020  70 65 6e 69 6e 67 20 66  6c 61 67 2e 74 78 74 2c  |pening flag.txt,|
+00002030  20 70 6c 65 61 73 65 20  63 6f 6e 74 61 63 74 20  | please contact |
+00002040  61 6e 20 41 64 6d 69 6e  69 73 74 72 61 74 6f 72  |an Administrator|
+00002050  0a 00 4e 6f 74 20 73 63  61 72 79 20 65 6e 6f 75  |..Not scary enou|
+00002060  67 68 2e 2e 20 42 6f 6f  21 20 3a 28 00 00 00 00  |gh.. Boo! :(....|
+
+Showing something to do with Administrator and the flag file
+
+also doing cat hexdump(The output file) | grep "flag" I get this:
+
+00002000  01 00 02 00 00 00 00 00  2e 2f 66 6c 61 67 2e 74  |........./flag.t|
+00002020  70 65 6e 69 6e 67 20 66  6c 61 67 2e 74 78 74 2c  |pening flag.txt,|
+00003780  5f 66 6c 61 67 00 73 65  74 75 70 00 00 2e 73 79  |_flag.setup...sy|
+
+Going back to the README file:
+
+In this challenge, you'll be provided with the binary file that runs on the server's back end.
+
+[*] Your task is to reverse-engineer the binary and identify the vulnerability.
+[!] Do not attempt to connect via netcat; a web page is provided for interaction :)
+[*] The input you submit is passed directly to the binary.
+[!] If a few words don't get the job done, consider trying a bit more...
+
+Looking at the last hint we ended up adding a large amount of characters to the input
+and this gave us a flag because there is a buffer limit on the binary.

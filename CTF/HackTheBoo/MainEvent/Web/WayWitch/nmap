@@ -1,0 +1,68 @@
+Starting Nmap 7.95 ( https://nmap.org ) at 2024-10-24 11:01 CDT
+Nmap scan report for 83-136-253-171.uk-lon1.upcloud.host (83.136.253.171)
+Host is up (0.094s latency).
+Not shown: 976 closed tcp ports (conn-refused)
+PORT      STATE    SERVICE        VERSION
+1/tcp     filtered tcpmux
+7/tcp     filtered echo
+19/tcp    filtered chargen
+22/tcp    open     ssh            OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0)
+| ssh-hostkey: 
+|   256 7f:98:f4:55:7f:75:49:3e:da:9d:ef:56:ea:a7:ee:03 (ECDSA)
+|_  256 3a:2d:c5:d2:32:9c:cb:42:64:12:4f:54:e3:3c:de:72 (ED25519)
+42/tcp    filtered nameserver
+79/tcp    filtered finger
+111/tcp   filtered rpcbind
+135/tcp   filtered msrpc
+139/tcp   filtered netbios-ssn
+161/tcp   filtered snmp
+389/tcp   filtered ldap
+445/tcp   filtered microsoft-ds
+515/tcp   filtered printer
+593/tcp   filtered http-rpc-epmap
+636/tcp   filtered ldapssl
+646/tcp   filtered ldp
+1433/tcp  filtered ms-sql-s
+1434/tcp  filtered ms-sql-m
+32771/tcp open     ssl/http       Node.js (Express middleware)
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName=localhost/organizationName=Organization/stateOrProvinceName=State/countryName=US
+| Not valid before: 2024-10-20T19:10:42
+|_Not valid after:  2024-11-19T19:10:42
+| tls-alpn: 
+|_  http/1.1
+|_http-title: WitchWay
+49157/tcp open     ssl/http       Node.js (Express middleware)
+| ssl-cert: Subject: commonName=localhost/organizationName=Organization/stateOrProvinceName=State/countryName=US
+| Not valid before: 2024-10-20T19:10:42
+|_Not valid after:  2024-11-19T19:10:42
+|_http-title: WitchWay
+|_ssl-date: TLS randomness does not represent time
+| tls-alpn: 
+|_  http/1.1
+49160/tcp open     http           Werkzeug httpd 3.0.4 (Python 3.10.12)
+|_http-title: 404 Not Found
+|_http-server-header: Werkzeug/3.0.4 Python/3.10.12
+50003/tcp open     ssl/http       Node.js (Express middleware)
+| ssl-cert: Subject: commonName=localhost/organizationName=Organization/stateOrProvinceName=State/countryName=US
+| Not valid before: 2024-10-20T19:10:42
+|_Not valid after:  2024-11-19T19:10:42
+| tls-alpn: 
+|_  http/1.1
+|_ssl-date: TLS randomness does not represent time
+|_http-title: WitchWay
+50500/tcp open     http           Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Inlane Freight
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+55056/tcp open     ssl/http       Node.js (Express middleware)
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName=localhost/organizationName=Organization/stateOrProvinceName=State/countryName=US
+| Not valid before: 2024-10-20T19:10:42
+|_Not valid after:  2024-11-19T19:10:42
+| tls-alpn: 
+|_  http/1.1
+|_http-title: WitchWay
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 37.63 seconds
